@@ -46,7 +46,7 @@
       let id = {
         movieID: element.value
       }
-      fetch('http://localhost:3000/api/favorites', {
+      fetch('https://movie-node-api.herokuapp.com/api/favorites', {
           method: 'POST',
           credentials: 'include',
           body: JSON.stringify(id),
