@@ -1,0 +1,88 @@
+<script>
+        function favoriteMe(element) {
+          let id = {
+              movieID: element.value
+          }
+          fetch('http://localhost:3000/api/favorites', {
+              method: 'POST',
+              credentials: 'include',
+              body: JSON.stringify(id),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+          })
+            .then(function(response) {
+                //console.log(response)
+            })
+            .catch(function(err) {
+                //console.log(err)
+            })
+        }
+    
+    </script> 
+
+
+<script>
+
+    (function() {
+        fetch('http://localhost:3000/api/getfavorites', {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            "Accept": "application/json; charset=utf-8"
+          }
+      })
+        .then(response => response.json())
+        .then(function(response) {
+           for(var i = 0; i < response.length; i++) {
+               let checkedBox = document.getElementById(response[i])
+                if (checkedBox !== null) {
+                    checkedBox.checked = true;
+                }
+           }
+        })
+        .catch(function(err) {
+            //console.log(err)
+        })
+    })()
+    </script>
+
+
+    
+<div style="text-align: center;">
+   <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <img style="height: 33em; width: 25em" class="card-img-top" src="<%= movie.Poster %>" alt="Card image cap">
+    </div>
+    <div class="col-md-6">
+        <div class="form-check" style="margin-top: 5px">
+            <label class="form-check-label" for="exampleCheck1"> 
+                <input type="checkbox" class="form-check-input" value="<%= movie.imdbID %>" id="<%= movie.imdbID %>" onchange="favoriteMe(this)"> 
+                Favorite Me
+           </label>
+        </div>
+        <h1>Title: <%= movie.Title %></h1>
+        <br />
+        <span>Year: <%= movie.Year %></span>
+        <br />
+        <span>Rated: <%= movie.Rated %></span>
+        <br />
+        <span>Runtime: <%= movie.Released %></span>
+        <br />
+        <span>Genre: <%= movie.Runtime %></span>
+        <br />
+        <span>Director: <%= movie.Director %></span>
+        <br />
+        <span>Writers: <%= movie.Writer %></span>
+        <br />
+        <span>Actors: <%= movie.Actors %></span>
+        <br />
+        <p>Plot: <%= movie.Plot %></p>
+        <br />
+        <span>Rating: <%= movie.Ratings[0].Value %></span>
+    </div>
+  </div>
+</div>
+</div>
+

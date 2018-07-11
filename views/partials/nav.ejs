@@ -1,0 +1,18 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><a href='/'>Search Movies</a></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <form class="form-inline mt-2 mt-md-0" method="POST" action='/api/search'>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="movie" required>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <% if(!user){ %>
+    <a class="btn btn-outline-primary" href="/users/signin">Sign in</a>
+    <div style="width: 10px"></div>
+    <a class="btn btn-outline-primary" href="/users/signup">Sign up</a>
+  <% } else { %>
+    <a class="btn btn-outline-primary" href="/#">loggedIn as <%= user.username %></a>
+    <div style="width: 10px"></div>
+    <a class="btn btn-outline-primary" href="/users/signout">Sign out</a>
+  <% } %>
+</div>

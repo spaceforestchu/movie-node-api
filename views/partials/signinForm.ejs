@@ -1,0 +1,20 @@
+<form class="form-signin" action="/users/signin" method="POST">
+    <% if (success_msg != false) { %>
+      <div class="alert alert-success">
+        <%= success_msg %>
+      </div>
+    <% } %>
+    <% if (error_msg != false) { %>
+      <div class="alert alert-danger">
+        <%= error_msg %>
+      </div>
+    <% } %> 
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="sign in with username" name='username' required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name='password' required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <a class="nav-link" href="/users/signup">sign up</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+</form>
