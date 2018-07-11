@@ -12,6 +12,7 @@ var sessionStore = new session.MemoryStore;
 var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 require('dotenv').config()
+var engine = require('ejs-locals');
 
 var User = require('./models/User');
 
@@ -27,6 +28,8 @@ var userRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
 
 var app = express();
+
+app.engine('ejs', engine);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,7 +55,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
     var namespace = param.split('.');
