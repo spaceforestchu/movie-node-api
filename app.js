@@ -12,7 +12,6 @@ var sessionStore = new session.MemoryStore;
 var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 require('dotenv').config()
-var engine = require('ejs-locals');
 
 var User = require('./models/User');
 
