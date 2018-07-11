@@ -15,7 +15,7 @@ require('dotenv').config()
 
 var User = require('./models/User');
 
-mongoose.connect(process.env.MONGODB, { useNewUrlParser: true }, function(err) {
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, function(err) {
   if (err) {
     console.log(`Error: ${err}`);
   }
